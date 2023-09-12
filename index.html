@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covid Tracker</title>
+    <title>Sillapa | Covid Tracker</title>
 
     <link rel="stylesheet" href="style.css">
-    <script src="./lib/tailwindcss.js"></script>
+    <script src="./assets/lib/tailwindcss.js"></script>
 </head>
 
 <body>
@@ -20,27 +20,27 @@
             </div>
             <div class="mt-4 flex flex-col md:flex-row gap-3">
                 <div
-                    class="flex flex-col justify-center items-center gap-3 w-[300px] h-[300px] rounded-3xl bg-pink-400 text-xl">
+                    class="flex flex-col justify-center items-center gap-3 w-[300px] h-[300px] rounded-2xl bg-pink-400 text-xl">
                     <p>ผู้ติดเชื้อ</p>
                     <p class="text-9xl"> {{ infected.sum }} </p>
                     <p>(เพิ่มวันนี้ {{ infected.new }} ราย)</p>
                 </div>
                 <div class="flex flex-col justify-between h-[300px]">
                     <div
-                        class="flex flex-col justify-center items-center gap-2 w-[300px] h-[145px] rounded-3xl bg-yellow-500 text-sm">
+                        class="flex flex-col justify-center items-center gap-2 w-[300px] h-[145px] rounded-2xl bg-yellow-500 text-sm">
                         <p>กำลังรักษา</p>
                         <p class="text-6xl"> {{ heal.sum }} </p>
                         <p>(เพิ่มวันนี้ {{ heal.new }} ราย)</p>
                     </div>
                     <div class="flex justify-between">
                         <div
-                            class="flex flex-col justify-center items-center gap-2 w-[145px] h-[145px] rounded-3xl bg-green-500 text-sm">
+                            class="flex flex-col justify-center items-center gap-2 w-[145px] h-[145px] rounded-2xl bg-green-500 text-sm">
                             <p>หายแล้ว</p>
                             <p class="text-6xl"> {{ recovered.sum }} </p>
                             <p>(เพิ่มวันนี้ {{ recovered.new }} ราย)</p>
                         </div>
                         <div
-                            class="flex flex-col justify-center items-center gap-2 w-[145px] h-[145px] rounded-3xl bg-red-500 text-sm">
+                            class="flex flex-col justify-center items-center gap-2 w-[145px] h-[145px] rounded-2xl bg-red-500 text-sm">
                             <p>เสียชีวิต</p>
                             <p class="text-6xl"> {{ dead.sum }} </p>
                             <p>(เพิ่มวันนี้ {{ dead.new }} ราย)</p>
@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    <script src="./lib/vue.js"></script>
+    <script src="./assets/lib/vue.js"></script>
     <script src="./app.js"></script>
 </body>
 

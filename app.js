@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            url: 'http://172.20.10.2:8888/covid_tracker_sillapa/api',
+            url: 'http://127.0.0.1:8888/covid_tracker_sillapa/api',
 
             infected: {
                 new: 835,
