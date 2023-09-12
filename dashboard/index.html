@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sillapa Dashboard</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <script src="../assets/lib/tailwindcss.js"></script>
+</head>
+
+<body>
+    <div class="wrapper flex">
+        <div class="w-[15vw] h-screen text-white bg-black">
+            <h1 class="">Dashboard</h1>
+        </div>
+        <div class="w-[85vw] h-screen">
+            <!-- Header -->
+            <div class="p-8">
+                <h1 class="text-2xl font-bold">Dashboard</h1>
+            </div>
+            <!-- Content -->
+            <div class="mt-4 px-8">
+                <h1 class="text-xl">รายชื่อผู้ติดเชื้อทั้งหมด</h1>
+                <table class="mt-2 w-full text-center rounded-2xl overflow-hidden">
+                    <tr class="bg-slate-300">
+                        <th class="py-2">ชื่อ</th>
+                        <th class="py-2">เพศ</th>
+                        <th class="py-2">อายุ</th>
+                        <th class="py-2">โรงพยาบาลที่กำลังรักษา</th>
+                        <th class="py-2">สถานะ</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr v-for="(item, index) in patients" :key="index"
+                        class="odd:bg-white even:bg-slate-50 hover:bg-slate-300">
+                        <td class="py-2"> {{ item.firstName }} {{ item.lastName }} </td>
+                        <td class="py-2"> {{ item.sex === 'm' ? 'ชาย' : item.sex === 'f' ? 'หญิง' : 'ไม่ระบุ' }}
+                        </td>
+                        <td class="py-2"> {{ item.age }} </td>
+                        <td class="py-2"> {{ item.hospitalLabel }} </td>
+                        <td class="py-2"> {{ item.status }} </td>
+                        <td>
+                            <div @click="editPatient(item)"
+                                class="mx-auto px-2 w-fit h-fit cursor-pointer bg-zinc-200 rounded-lg">...</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <transition>
+            <div v-if="popupDisplay"
+                class="absolute top-0 left-0 flex justify-center items-center w-screen h-screen bg-black/25">
+                <div class="p-4 bg-white rounded-lg">
+                    <h1>แก้ไขข้อมูล</h1>
+                    <div class="mt-2 flex gap-2">
+                        <div class="bg-zinc-100 px-2 py-1 rounded-lg">
+                            <input v-model="patient.firstName"
+                                class="w-full h-full bg-transparent border-none outline-none" type="text"
+                                placeholder="ชื่อ">
+                        </div>
+                        <div class="bg-zinc-100 px-2 py-1 rounded-lg">
+                            <input v-model="patient.lastName"
+                                class="w-full h-full bg-transparent border-none outline-none" type="text"
+                                placeholder="นามสกุล">
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <p>เลือกเพศ</p>
+                        <div class="flex gap-2">
+                            <div class="flex items-center gap-2">
+                                <input v-model="patient.sex" type="radio" name="sex" id="m">
+                                <label for="m">ชาย</label>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <input v-model="patient.sex" type="radio" name="sex" id="f">
+                                <label for="f">หญิง</label>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <input v-model="patient.sex" type="radio" name="sex" id="o">
+                                <label for="o">อื่น ๆ</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="bg-zinc-100 px-2 py-1 rounded-lg">
+                            <input v-model="patient.age" class="w-full h-full bg-transparent border-none outline-none"
+                                type="number" placeholder="อายุ">
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <p>เลือกวันที่</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="">
+                                <label class="text-sm" for="">วันติดเชื้อ</label>
+                                <div class="bg-zinc-100 px-2 py-1 rounded-lg">
+                                    <input v-model="patient.infectedDate" class="w-full h-full bg-transparent border-none outline-none" type="date">
+                                </div>
+                            </div>
+                            <div class="">
+                                <label class="text-sm" for="">วันรักษา</label>
+                                <div class="bg-zinc-100 px-2 py-1 rounded-lg">
+                                    <input v-model="patient.heelDate" class="w-full h-full bg-transparent border-none outline-none" type="date">
+                                </div>
+                            </div>
+                            <div class="">
+                                <label class="text-sm" for="">วันหาย</label>
+                                <div class="bg-zinc-100 px-2 py-1 rounded-lg">
+                                    <input v-model="patient.recoveredDate" class="w-full h-full bg-transparent border-none outline-none" type="date">
+                                </div>
+                            </div>
+                            <div class="">
+                                <label class="text-sm" for="">วันตาย</label>
+                                <div class="bg-zinc-100 px-2 py-1 rounded-lg">
+                                    <input v-model="patient.deadDate" class="w-full h-full bg-transparent border-none outline-none" type="date">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex gap-2">
+                        <button @click="popupDisplay = false"
+                            class="w-1/2 py-1 text-white bg-zinc-400 rounded-lg">ยกเลิก</button>
+                        <button @click="confirmPatient" class="w-1/2 py-1 text-white bg-green-600 rounded-lg">ตกลง</button>
+                    </div>
+                </div>
+            </div>
+        </transition>
+
+
+    </div>
+
+    <script src="../assets/lib/vue.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
