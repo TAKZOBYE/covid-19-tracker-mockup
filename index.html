@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="flex flex-col lg:flex-row items-center justify-center gap-3 w-full mt-14 px-4">
+            <div class="flex flex-col justify-center items-center gap-6 w-[400px] h-[75%] text-4xl">
+                <p>ยืนยันตัวเลขผู้ติดเชื้อ</p>
+                <p class="text-6xl font-bold">COVID-19</p>
+                <p>ทั้งหมดในขอนแก่น</p>
+            </div>
+            <div class="mt-4 flex flex-col md:flex-row gap-3">
+                <div
+                    class="flex flex-col justify-center items-center gap-3 w-[300px] h-[300px] rounded-md bg-yellow-500 text-xl">
+                    <p>ผู้ติดเชื้อ</p>
+                    <p class="text-9xl">835</p>
+                    <p>(เพิ่มวันนี้ 1837 ราย)</p>
+                </div>
+                <div class="flex flex-col justify-between h-[300px]">
+                    <div
+                        class="flex flex-col justify-center items-center gap-2 w-[300px] h-[145px] rounded-md bg-yellow-500 text-sm">
+                        <p>กำลังรักษา</p>
+                        <p class="text-6xl">766</p>
+                        <p>(เพิ่มวันนี้ 970 ราย)</p>
+                    </div>
+                    <div class="flex justify-between">
+                        <div
+                            class="flex flex-col justify-center items-center gap-2 w-[145px] h-[145px] rounded-md bg-yellow-500 text-sm">
+                            <p>หายแล้ว</p>
+                            <p class="text-6xl">57</p>
+                            <p>(เพิ่มวันนี้ 40 ราย)</p>
+                        </div>
+                        <div
+                            class="flex flex-col justify-center items-center gap-2 w-[145px] h-[145px] rounded-md bg-yellow-500 text-sm">
+                            <p>เสียชีวิต</p>
+                            <p class="text-6xl">3</p>
+                            <p>(เพิ่มวันนี้ 0 ราย)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>
+                    <button>เลือกประเภท</button>
+                    <ul>
+                        <li>ทั้งหมด</li>
+                        <li>ติดเชื้อ</li>
+                        <li>กำลังรักษา</li>
+                        <li>หายแล้ว</li>
+                        <li>เสียชีวิต</li>
+                    </ul>
+                </div>
+                <div>
+                    <input type="date">
+                </div>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <th>ชื่อ</th>
+                        <th>เพศ</th>
+                        <th>อายุ</th>
+                        <th>โรงพยาบาลที่กำลังรักษา</th>
+                        <th>สถานะ</th>
+                    </tr>
+                    <tr>
+                        <td>นายกฤติพงษ์ สีแก้วนิตย์</td>
+                        <td>ชาย</td>
+                        <td>17</td>
+                        <td>ราชพฤกษ์</td>
+                        <td>กำลังรักษา</td>
+                    </tr>
+                    <tr>
+                        <td>นายกฤติพงษ์ สีแก้วนิตย์</td>
+                        <td>ชาย</td>
+                        <td>17</td>
+                        <td>ราชพฤกษ์</td>
+                        <td>กำลังรักษา</td>
+                    </tr>
+                    <tr>
+                        <td>นายกฤติพงษ์ สีแก้วนิตย์</td>
+                        <td>ชาย</td>
+                        <td>17</td>
+                        <td>ราชพฤกษ์</td>
+                        <td>กำลังรักษา</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
