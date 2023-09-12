@@ -38,23 +38,23 @@ try {
         }
 
         if ($date) {
-            $queryText = 'SELECT first_name, last_name, age, sex, hospital_id, infected_date, heal_date, recovered_date, dead_date, name, label 
+            $queryText = 'SELECT patients.id AS patientId, first_name, last_name, age, sex, hospital_id, infected_date, heal_date, recovered_date, dead_date, name, label 
             FROM patients
             INNER JOIN hospital_info ON patients.hospital_id = hospital_info.id
             WHERE ' . $type . '_date = :date' . $additionalText;
         } else {
-            $queryText = "SELECT first_name, last_name, age, sex, hospital_id, infected_date, heal_date, recovered_date, dead_date, name, label 
+            $queryText = "SELECT patients.id AS patientId, first_name, last_name, age, sex, hospital_id, infected_date, heal_date, recovered_date, dead_date, name, label 
                 FROM patients 
                 INNER JOIN hospital_info ON patients.hospital_id = hospital_info.id
                 WHERE " . $type . "_date IS NOT NULL AND " . $type . "_date <> ''"  . $additionalText;
         }
     } else if (!$type && $date) {
-        $queryText = 'SELECT first_name, last_name, age, sex, hospital_id, infected_date, heal_date, recovered_date, dead_date, name, label 
+            $queryText = 'SELECT patients.id AS patientId, first_name, last_name, age, sex, hospital_id, infected_date, heal_date, recovered_date, dead_date, name, label 
                 FROM patients 
                 INNER JOIN hospital_info ON patients.hospital_id = hospital_info.id 
                 WHERE infected_date = :date OR heal_date = :date OR recovered_date = :date OR dead_date = :date';
     } else {
-        $queryText = 'SELECT first_name, last_name, age, sex, hospital_id, infected_date, heal_date, recovered_date, dead_date, name, label 
+            $queryText = 'SELECT patients.id AS patientId, first_name, last_name, age, sex, hospital_id, infected_date, heal_date, recovered_date, dead_date, name, label 
                 FROM patients 
                 INNER JOIN hospital_info 
                 ON patients.hospital_id = hospital_info.id';
