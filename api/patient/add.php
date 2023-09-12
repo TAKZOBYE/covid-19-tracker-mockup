@@ -1,5 +1,5 @@
 <?php
-    include '../mysql.php';
+    include '../lib/mysql.php';
 
     session_start();
 
