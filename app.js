@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            url: 'http://127.0.0.1:8888/covid_tracker_sillapa/api',
+            url: 'http://10.10.51.144:8888/covid_tracker_sillapa/api',
 
             infected: {
                 new: 835,
@@ -28,6 +28,9 @@ const app = Vue.createApp({
         }
     },
     methods: {
+        href(path) {
+            // window.location.href = `${window.location.href}dashboard`;
+        },
         async getDataCount() {
             const res = await fetch(`${this.url}/patient/get_count.php`, {});
             const data = await res.json();
