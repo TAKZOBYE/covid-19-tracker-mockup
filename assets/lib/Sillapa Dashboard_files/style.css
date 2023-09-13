@@ -1,0 +1,22 @@
+@font-face {
+	font-family: Prompt;
+	src: url(./assets/font/Prompt/Prompt-Regular.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	font-family: Prompt;
+}
+
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.25s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
+}
