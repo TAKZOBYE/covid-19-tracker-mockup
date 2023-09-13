@@ -1,16 +1,20 @@
 <?php 
     include '../lib/mysql.php';
 
+    // if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    //     return http_response_code(400);
+    // }
+
     session_start();
 
-    if (empty($_SESSION['isAuthenticated']) || ($_SESSION['type'] != 'admin' && $_SESSION['type'] != 'hospital_admin')) return;
+    // if (empty($_SESSION['isAuthenticated']) || ($_SESSION['type'] != 'admin' && $_SESSION['type'] != 'hospital_admin')) return;
 
     $data = json_decode(file_get_contents('php://input'), true);
 
     $patientId = $data['patientId'] ?? null;
 
     if (!$patientId) {
-        echo 'Incomplete information filled in';
+        echo json_encode(['message' => 'Incomplete information filled in']);
         return;
     };
 
@@ -19,5 +23,5 @@
 
     $stmt->execute();
 
-    echo 'Delete Success'
+    echo json_encode(['message' => 'Delete Success']);
 ?>

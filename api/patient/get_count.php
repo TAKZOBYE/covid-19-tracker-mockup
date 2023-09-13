@@ -1,5 +1,9 @@
 <?php 
     include '../lib/mysql.php';
+
+    // if ($_SERVER['REQUEST_METHOD'] != 'GET') {
+    //     return http_response_code(400);
+    // }
     
     $currentDate = date("Y-m-d");
 
